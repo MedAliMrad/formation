@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///C:/Learning/stage/Proformation/projetformation/src/app/apps/layout.tsx"],"sourcesContent":["\"use client\"\r\n\r\nimport React from \"react\"\r\nimport Header from \"../components/header\"\r\n\r\ninterface IProps {\r\n    children: React.ReactNode\r\n}\r\n\r\nexport default function Layout({children}:IProps)\r\n{\r\n    return(\r\n        <html lang=\"en\">\r\n            <body>\r\n                <Header />\r\n                {children}\r\n            </body>\r\n        </html>\r\n    )\r\n}"],"names":[],"mappings":";;;;AAGA;AAHA;;;AASe,SAAS,OAAO,EAAC,QAAQ,EAAQ;IAE5C,qBACI,8OAAC;QAAK,MAAK;kBACP,cAAA,8OAAC;;8BACG,8OAAC,mIAAA,CAAA,UAAM;;;;;gBACN;;;;;;;;;;;;AAIjB","debugId":null}}]
+}
