@@ -12,24 +12,7 @@ interface FormateurA {
 
 export default function TableAnime() {
   const [formAnime, setFormAnim] = useState<FormateurA[]>([
-    {
-      id: "CLI-045",
-      nom: "jean",
-      sessions: 12,
-      taux: "95%",
-      lastS: "10/09/2024",
-      dispo: "15-17/10",
-      tarif: 600,
-    },
-    {
-      id: "CLI-046",
-      nom: "Laura",
-      sessions: 5,
-      taux: "75%",
-      lastS: "05/08/2024",
-      dispo: "20-22/10",
-      tarif: 650,
-    },
+
   ]);
   return (
     <div>
@@ -47,18 +30,26 @@ export default function TableAnime() {
               <th className="border px-4 py-2">Tarif/jour</th>
             </tr>
           </thead>
-          <tbody className=" text-black divide-y divide-gray-300">
-            {formAnime.map((FormateurA, idx) => (
-              <tr className="bg-gray-50" key={idx}>
-                <th className="border px-4 py-2">{FormateurA.id}</th>
-                <td className="border px-4 py-2">{FormateurA.nom}</td>
-                <td className="border px-4 py-2">{FormateurA.sessions}</td>
-                <td className="border px-4 py-2">{FormateurA.taux}</td>
-                <td className="border px-4 py-2">{FormateurA.lastS}</td>
-                <td className="border px-4 py-2">{FormateurA.dispo}</td>
-                <td className="border px-4 py-2">T{FormateurA.tarif}</td>
+          <tbody className="text-black divide-y divide-gray-300">
+            {formAnime.length > 0 ? (
+              formAnime.map((formateur, idx) => (
+                <tr className="bg-gray-50" key={idx}>
+                  <th className="border px-4 py-2">{formateur.id}</th>
+                  <td className="border px-4 py-2">{formateur.nom}</td>
+                  <td className="border px-4 py-2">{formateur.sessions}</td>
+                  <td className="border px-4 py-2">{formateur.taux}</td>
+                  <td className="border px-4 py-2">{formateur.lastS}</td>
+                  <td className="border px-4 py-2">{formateur.dispo}</td>
+                  <td className="border px-4 py-2">T{formateur.tarif}</td>
+                </tr>
+              ))
+            ) : (
+              <tr className="bg-white">
+                <td colSpan={7} className="text-center text-gray-500 py-4">
+                  Aucun formateur trouvé
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

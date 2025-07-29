@@ -11,24 +11,7 @@ interface FormateurA {
 }
 
 export default function TableValide() {
-  const [formAnime, setFormAnim] = useState<FormateurA[]>([
-    {
-      nom: "Jean Dupont",
-      valideLe: "12/09/2024",
-      validateur: "Mme Durand",
-      disponibilite: "15-17/10",
-      competence: "DevOps Avancé",
-      tarif: 600,
-    },
-    {
-      nom: "Laura Martin",
-      valideLe: "05/08/2024",
-      validateur: "Mr Lefevre",
-      disponibilite: "20-22/10",
-      competence: "React JS",
-      tarif: 650,
-    },
-  ]);
+  const [formAnime, setFormAnim] = useState<FormateurA[]>([]);
 
   return (
     <div>
@@ -47,18 +30,27 @@ export default function TableValide() {
               <th className="border px-4 py-2">Tarif/jour</th>
             </tr>
           </thead>
-          <tbody className="text-black divide-y divide-gray-300">
-            {formAnime.map((formateur, idx) => (
-              <tr className="bg-gray-50" key={idx}>
-                <td className="border px-4 py-2">{formateur.nom}</td>
-                <td className="border px-4 py-2">{formateur.valideLe}</td>
-                <td className="border px-4 py-2">{formateur.validateur}</td>
-                <td className="border px-4 py-2">{formateur.disponibilite}</td>
-                <td className="border px-4 py-2">{formateur.competence}</td>
-                <td className="border px-4 py-2">{formateur.tarif} €</td>
-              </tr>
-            ))}
-          </tbody>
+<tbody className="text-black divide-y divide-gray-300">
+  {formAnime.length > 0 ? (
+    formAnime.map((formateur, idx) => (
+      <tr className="bg-gray-50" key={idx}>
+        <td className="border px-4 py-2">{formateur.nom}</td>
+        <td className="border px-4 py-2">{formateur.valideLe}</td>
+        <td className="border px-4 py-2">{formateur.validateur}</td>
+        <td className="border px-4 py-2">{formateur.disponibilite}</td>
+        <td className="border px-4 py-2">{formateur.competence}</td>
+        <td className="border px-4 py-2">{formateur.tarif} €</td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan={6} className="text-center text-gray-500 py-4">
+        Aucun formateur validé trouvé
+      </td>
+    </tr>
+  )}
+</tbody>
+
         </table>
       </div>
     </div>
