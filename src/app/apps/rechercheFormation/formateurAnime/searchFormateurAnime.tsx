@@ -1,7 +1,10 @@
 "use client";
 import { useState } from "react";
-export default function FormateurAnime() {
-  const [formation, setFormation] = useState("");
+interface FormateurAnimeProps{
+  onSearch:(variables:{code:number;date:Date;tarif:number})=>void;
+}
+export default function FormateurAnime({onSearch}:FormateurAnimeProps) {
+  const [code, setCode] = useState("");
   const [date, setDate] = useState("");
   const [tarif, setTarif] = useState("");
   return (
@@ -13,8 +16,8 @@ export default function FormateurAnime() {
         <input
           type="text"
           className="block mt-1 w-full border-gray-300 rounded-md shadow-sm p-2 bg-gray-50 "
-          value={formation}
-          onChange={(e) => setFormation(e.target.value)}
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
           placeholder="devops / code / client"
         />
       </div>
@@ -37,15 +40,18 @@ export default function FormateurAnime() {
           type="number"
           className="block mt-1 w-full border-gray-300 rounded-md shadow-sm p-2 bg-gray-50 "
           value={tarif}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => setTarif(e.target.value)}
         />
       </div>
       <button
         type="submit"
         className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors"
          onClick={() => {
-          /* handle submit logic later */
-          console.log({ formation, date, tarif });
+          if (!code ||!date||!tarif){
+            alert("remplir tout les champs SVP");
+            return;
+          }
+          onSearch({code:Number(code),date:new Date(date),tarif:Number(tarif)});
         }}
       >
         Rechercher

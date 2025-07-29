@@ -1,7 +1,12 @@
 "use client";
 import { useState } from "react";
+import { start } from "repl";
 
-export default function FormateurValide() {
+interface FormateurValideProps{
+  onSearch:(variables:{competences:string[];startDate:string;endDate:string;tarif:number})=>void
+}
+
+export default function FormateurValide({onSearch}:FormateurValideProps) {
   const [competences, setCompetences] = useState("");
   const [date, setDate] = useState("");
   const [tarif, setTarif] = useState("");
@@ -47,6 +52,15 @@ export default function FormateurValide() {
         className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors"
         onClick={() => {
           console.log({ competences, date, tarif });
+          if (!competences || !date ||!tarif){
+            alert ("merci de remplir tous les champs");
+            return;
+          }
+          onSearch({competences:competences.split(",").map((c)=>c.trim()),
+            startDate:date,
+            endDate:date,
+            tarif:Number(tarif)
+          });
         }}
       >
         Rechercher

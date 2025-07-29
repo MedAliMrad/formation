@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 interface FormateurA {
   id: string;
   nom: string;
@@ -9,11 +8,11 @@ interface FormateurA {
   dispo: string;
   tarif: number;
 }
+interface TableAnimeProps{
+  formateurs:FormateurA[];
+}
 
-export default function TableAnime() {
-  const [formAnime, setFormAnim] = useState<FormateurA[]>([
-
-  ]);
+export default function TableAnime({formateurs}:TableAnimeProps) {
   return (
     <div>
       <h2 className="p-6 text-2xl text-center text-black font-bold">Filtre formateurs ayant animé une formation</h2>
@@ -31,8 +30,8 @@ export default function TableAnime() {
             </tr>
           </thead>
           <tbody className="text-black divide-y divide-gray-300">
-            {formAnime.length > 0 ? (
-              formAnime.map((formateur, idx) => (
+            {formateurs.length > 0 ? (
+              formateurs.map((formateur, idx) => (
                 <tr className="bg-gray-50" key={idx}>
                   <th className="border px-4 py-2">{formateur.id}</th>
                   <td className="border px-4 py-2">{formateur.nom}</td>

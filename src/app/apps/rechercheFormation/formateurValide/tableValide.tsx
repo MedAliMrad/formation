@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-interface FormateurA {
+interface FormateurV {
   nom: string;
   valideLe: string;
   validateur: string;
@@ -9,9 +9,9 @@ interface FormateurA {
   competence: string;
   tarif: number;
 }
-
-export default function TableValide() {
-  const [formAnime, setFormAnim] = useState<FormateurA[]>([]);
+interface TableValideProps{formateurs:FormateurV[]}
+export default function TableValide({ formateurs }: TableValideProps) {
+  const [formAnime, setFormAnim] = useState<FormateurV[]>([]);
 
   return (
     <div>
@@ -31,8 +31,8 @@ export default function TableValide() {
             </tr>
           </thead>
 <tbody className="text-black divide-y divide-gray-300">
-  {formAnime.length > 0 ? (
-    formAnime.map((formateur, idx) => (
+  {formateurs.length > 0 ? (
+    formateurs.map((formateur, idx) => (
       <tr className="bg-gray-50" key={idx}>
         <td className="border px-4 py-2">{formateur.nom}</td>
         <td className="border px-4 py-2">{formateur.valideLe}</td>

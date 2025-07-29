@@ -6,6 +6,8 @@
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
+    "FILTER_FORMATEURS_WITHOUT_EXP": (()=>FILTER_FORMATEURS_WITHOUT_EXP),
+    "FILTER_FORMATEURS_WITH_EXP": (()=>FILTER_FORMATEURS_WITH_EXP),
     "SEARCH_CLIENTS": (()=>SEARCH_CLIENTS)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/graphql-tag/lib/index.js [app-client] (ecmascript)");
@@ -19,6 +21,28 @@ const SEARCH_CLIENTS = __TURBOPACK__imported__module__$5b$project$5d2f$node_modu
       phone
       entreprise
     }
+  }
+`;
+const FILTER_FORMATEURS_WITH_EXP = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["gql"]`
+  query FilterFormateurWithExp($filterExp: filterFormateurInput!) {
+    FilterFormateurWithExp(filterExp: $filterExp) {
+      id
+      name
+      lastname
+      email
+      tarifConventionne
+    }
+  }
+`;
+const FILTER_FORMATEURS_WITHOUT_EXP = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["gql"]`
+  query FilterFormateurWithoutExp($filterWithoutExp:FilterFormateursWithoutExpInput!){
+  FilterFormateurWithoutExp(filterWithoutExp:$filterWithoutExp){
+  id
+  name
+  lastname
+  email
+  competence
+  tarifConventionne}
   }
 `;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
