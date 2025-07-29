@@ -13,7 +13,7 @@ export const SEARCH_CLIENTS = gql`
 `;
 export const FILTER_FORMATEURS_WITH_EXP = gql`
   query FilterFormateurWithExp($filterExp: filterFormateurInput!) {
-    FilterFormateurWithExp(filterExp: $filterExp) {
+    filterFormateurWithExp(filterExp: $filterExp) {
       id
       name
       lastname
@@ -24,8 +24,8 @@ export const FILTER_FORMATEURS_WITH_EXP = gql`
 `;
 
 export const FILTER_FORMATEURS_WITHOUT_EXP = gql`
-  query FilterFormateurWithoutExp($filterWithoutExp:FilterFormateursWithoutExpInput!){
-  FilterFormateurWithoutExp(filterWithoutExp:$filterWithoutExp){
+  query FilterFormateurWithoutExp($filterWithoutExp:filterFormateursWithoutExpInput!){
+  filterFormateurWithoutExp(filterWithoutExp:$filterWithoutExp){
   id
   name
   lastname

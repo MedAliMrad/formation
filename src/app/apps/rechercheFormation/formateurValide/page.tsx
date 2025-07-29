@@ -16,7 +16,7 @@ interface RawFormateur {
 export default function Page() {
   const [formateurs, setFormateurs] = useState<RawFormateur[]>([]);
   const [fetchFormateurWithoutExp, { loading, error }] = useLazyQuery<
-    { filterFormateursWithoutExp: RawFormateur[] }, // Make sure the query name matches exactly
+    { filterFormateurWithoutExp: RawFormateur[] }, // Make sure the query name matches exactly
     {
       filterWithoutExp: {
         competences: string[];
@@ -28,7 +28,7 @@ export default function Page() {
   >(FILTER_FORMATEURS_WITHOUT_EXP, {
     onCompleted: (data) => {
       setFormateurs(
-        data.filterFormateursWithoutExp.map((f) => ({
+        data.filterFormateurWithoutExp.map((f) => ({
           id: f.id,
           name: f.name,
           lastname: f.lastname,

@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { start } from "repl";
 
 interface FormateurValideProps{
   onSearch:(variables:{competences:string[];startDate:string;endDate:string;tarif:number})=>void
@@ -8,7 +7,8 @@ interface FormateurValideProps{
 
 export default function FormateurValide({onSearch}:FormateurValideProps) {
   const [competences, setCompetences] = useState("");
-  const [date, setDate] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [tarif, setTarif] = useState("");
 
   return (
@@ -27,13 +27,24 @@ export default function FormateurValide({onSearch}:FormateurValideProps) {
       </div>
       <div className="p-5">
         <label className="block text-sm font-medium text-gray-700">
-          Dates souhaitées
+          Date Debut
         </label>
         <input
           type="date"
           className="block mt-1 w-full border-gray-300 rounded-md shadow-sm p-2 bg-gray-50"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+      </div>
+       <div className="p-5">
+        <label className="block text-sm font-medium text-gray-700">
+          Date Fin
+        </label>
+        <input
+          type="date"
+          className="block mt-1 w-full border-gray-300 rounded-md shadow-sm p-2 bg-gray-50"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
         />
       </div>
       <div className="p-5">
@@ -51,14 +62,14 @@ export default function FormateurValide({onSearch}:FormateurValideProps) {
         type="submit"
         className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition-colors"
         onClick={() => {
-          console.log({ competences, date, tarif });
-          if (!competences || !date ||!tarif){
+          console.log({ competences, startDate,endDate, tarif });
+          if (!competences || !startDate || !endDate ||!tarif){
             alert ("merci de remplir tous les champs");
             return;
           }
           onSearch({competences:competences.split(",").map((c)=>c.trim()),
-            startDate:date,
-            endDate:date,
+            startDate:startDate,
+            endDate:endDate,
             tarif:Number(tarif)
           });
         }}
